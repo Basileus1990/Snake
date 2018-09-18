@@ -1,0 +1,45 @@
+﻿<Window x:Class="SnakeNamespace.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SnakeNamespace"
+        KeyDown="Window_KeyDown"
+        Loaded="Window_Loaded"
+        mc:Ignorable="d"
+        Title="Snake" Height="340" Width="450" ResizeMode="CanMinimize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Canvas Where Game take place -->
+        <Canvas Height="300" Width="300" x:Name="GameCanvas" Grid.Column="0" Background="LightYellow"></Canvas>
+
+        <!-- MENU -->
+        <Border BorderBrush="DarkGray" BorderThickness="1"/>
+        <Grid Grid.Column="1" Background="LightBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+
+            <!--Start Button-->
+            <Button x:Name="MainButton" Click="MainButton_Click" Content="START" FontSize="24" Grid.Row="0" Margin="7" Background="Orange" />
+            <Button x:Name="RestartButton" Click="RestartButton_Click" Content="RESTART" FontSize="24" Grid.Row="1" Margin="7" Background="Orange" Visibility="Hidden"/>
+            <!-- Score label -->
+            <StackPanel Grid.Row="2">
+                <Label Content="SCORE" HorizontalAlignment="Center" FontSize="25"/>
+                <Label x:Name="ScoreLabel" Content="0" HorizontalAlignment="Center" FontSize="30" />
+            </StackPanel>
+            <StackPanel Grid.Row="3">
+                <Label Content="BEST SCORE:" HorizontalAlignment="Center" FontSize="23"/>
+                <Label x:Name="BestScoreLabel" Content="0" HorizontalAlignment="Center" FontSize="30" />
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</Window>
