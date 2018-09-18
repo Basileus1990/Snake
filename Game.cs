@@ -14,8 +14,9 @@ namespace SnakeNamespace
         public Cherry cherry;
         public VisualCopyOfSnake copyOfSnake;
         public Thread moveThread;
-        private readonly object PadLock = new object();
         public const int RectangleSize = 15;
+
+        private readonly object PadLock = new object();
         private int GameCanvasSize;
         public int GameCanvasSizeProp
         {

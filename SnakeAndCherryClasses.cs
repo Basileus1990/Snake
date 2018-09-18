@@ -260,7 +260,7 @@ namespace SnakeNamespace
                 game.cherry.CherryBody.SetRandomCherryPosition(game);
                 game.MainWindowObject.UpdateUI(game.cherry);
             }
-            else if(CheckIfNextPositonIsSnake(TargetPosition) || game.MainWindowObject.Score == 4000)
+            else if(CheckIfNextPositonIsSnake(TargetPosition) || game.MainWindowObject.Score >= 3960)
             {
                 game.EndOfGame();
                 Thread.CurrentThread.Abort();
