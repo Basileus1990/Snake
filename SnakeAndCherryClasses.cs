@@ -17,6 +17,7 @@ namespace SnakeNamespace
     class Cherry : IUpdateUI
     {
         public MapSquere CherryBody;
+        public SolidColorBrush Colour = new SolidColorBrush(Colors.Red);
         public List<MapSquere> GetBody
         {
             get
@@ -44,6 +45,7 @@ namespace SnakeNamespace
         private readonly object PadLock = new object();
         private Game game;
 
+        public SolidColorBrush Colour = new SolidColorBrush(Colors.Blue);
         public bool AbortMoveThread = false;
         public List<MapSquere> SnakeBodyList = new List<MapSquere>();
         public List<MapSquere> GetBody
@@ -280,11 +282,14 @@ namespace SnakeNamespace
             return false;
         }
     }
+
+
     class VisualCopyOfSnake : IUpdateUI
     {
         private Snake snake;
         private Game game;
 
+        public SolidColorBrush Colour = new SolidColorBrush(Colors.Blue);
         public List<MapSquere> SnakeCopyBodyList = new List<MapSquere>();
         public List<MapSquere> GetBody
         {
