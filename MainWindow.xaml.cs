@@ -115,8 +115,7 @@ namespace SnakeNamespace
                     }
             }
 
-            //Restains button form changing colout when focused 
-            //(sender as Button).Focusable = false;
+            (sender as Button).Focusable = false;
         }
         private void RestartButton_Click(object sender, RoutedEventArgs e)
         {
