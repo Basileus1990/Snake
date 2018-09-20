@@ -141,7 +141,7 @@ namespace SnakeNamespace
             else
                 UIobject = (VisualCopyOfSnake)GameObject;
 
-            List<MapSquere> Body = UIobject.GetBody;
+            List<MapSquere> Body = UIobject.GetBodyAsArrayList;
             Dispatcher.BeginInvoke((Action)(() => 
             {
                 for (int i = 0; i < Body.Count; i++)

@@ -6,37 +6,10 @@ using System.Windows.Media;
 using System.Windows.Input;
 using System.Threading;
 using System.Windows.Threading;
+using SnakeNamespace;
 
 namespace SnakeNamespace
 {
-    interface IUpdateUI
-    {
-        List<MapSquere> GetBody { get; } //Used only for Update of UI
-    }
-
-    class Cherry : IUpdateUI
-    {
-        public MapSquere CherryBody;
-        public SolidColorBrush Colour = new SolidColorBrush(Colors.Red);
-        public List<MapSquere> GetBody
-        {
-            get
-            {
-                List<MapSquere> Body = new List<MapSquere>
-                {
-                    CherryBody
-                };
-                return Body;
-            }
-        }
-
-        public Cherry(Game game)
-        {
-            CherryBody = new MapSquere(game, this);
-            game.MainWindowObject.UpdateUI(this);
-        }
-    }
-
     class Snake : IUpdateUI
     {
         private int DirectionOfMoving = 4; // { 0-Right  1-Up  2-Left  3-Down }
@@ -48,7 +21,7 @@ namespace SnakeNamespace
         public SolidColorBrush Colour = new SolidColorBrush(Colors.Blue);
         public bool AbortMoveThread = false;
         public List<MapSquere> SnakeBodyList = new List<MapSquere>();
-        public List<MapSquere> GetBody
+        public List<MapSquere> GetBodyAsArrayList
         {
             get
             {
@@ -284,39 +257,5 @@ namespace SnakeNamespace
     }
 
 
-    class VisualCopyOfSnake : IUpdateUI
-    {
-        private Snake snake;
-        private Game game;
-
-        public SolidColorBrush Colour = new SolidColorBrush(Colors.Blue);
-        public List<MapSquere> SnakeCopyBodyList = new List<MapSquere>();
-        public List<MapSquere> GetBody
-        {
-            get
-            {
-                return SnakeCopyBodyList;
-            }
-        }
-
-        public VisualCopyOfSnake(Snake snake, Game game) //Create Visual Copy of Snake
-        {
-            this.game = game;
-            this.snake = snake;
-            for (int i = 0; i < snake.SnakeBodyList.Count - 1; i++)
-            {
-                SnakeCopyBodyList.Add(new MapSquere(snake, this));
-            }
-        }
-
-        public void UpdateCopyOfSnake()
-        {
-            for (int i = 0; i <  SnakeCopyBodyList.Count; i++)
-            {
-                SnakeCopyBodyList[i].CanvasLeft = snake.SnakeBodyList[i].CanvasLeft;
-                SnakeCopyBodyList[i].CanvasTop = snake.SnakeBodyList[i].CanvasTop;
-            }
-            game.MainWindowObject.UpdateUI(this);
-        }
-    }
+    
 }
