@@ -93,7 +93,7 @@ namespace SnakeNamespace
                     }
                 case "STOP":
                     {
-                        game.EndMoveThread();
+                        game.snakeMove.EndMoveThread();
                         SetKeyBuffer = Key.None;
 
                         RestartButton.Visibility = Visibility.Visible;
@@ -102,7 +102,7 @@ namespace SnakeNamespace
                     }
                 case "CONTINUE":
                     {
-                        game.CreateMoveThread();
+                        game.snakeMove.StartNewMoveThread();
 
                         RestartButton.Visibility = Visibility.Hidden;
                         (sender as Button).Content = "STOP";
@@ -141,7 +141,7 @@ namespace SnakeNamespace
             else
                 UIobject = (VisualCopyOfSnake)GameObject;
 
-            List<MapSquere> Body = UIobject.GetBodyAsArrayList;
+            List<MapSquere> Body = UIobject.GetBodyAsList;
             Dispatcher.BeginInvoke((Action)(() => 
             {
                 for (int i = 0; i < Body.Count; i++)
@@ -160,11 +160,11 @@ namespace SnakeNamespace
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (KeyBuffer == e.Key || game == null || !game.moveThread.IsAlive)
+            if (KeyBuffer == e.Key || game == null || !game.snakeMove.moveThread.IsAlive)
             {
                 return;
             }
-            game.snake.ChangeDirectionOfMoving(e.Key);
+            game.snakeMove.ChangeDirectionOfMoving(e.Key);
             KeyBuffer = e.Key;
         }
 

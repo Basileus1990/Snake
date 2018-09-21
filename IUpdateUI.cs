@@ -8,6 +8,6 @@ namespace SnakeNamespace
 {
     interface IUpdateUI
     {
-        List<MapSquere> GetBodyAsArrayList { get; } //Used only for Update of UI
+        List<MapSquere> GetBodyAsList { get; }
     }
 }

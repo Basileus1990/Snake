@@ -12,7 +12,7 @@ namespace SnakeNamespace
     {
         public MapSquere CherryBody;
         public SolidColorBrush Colour = new SolidColorBrush(Colors.Red);
-        public List<MapSquere> GetBodyAsArrayList
+        public List<MapSquere> GetBodyAsList
         {
             get
             {

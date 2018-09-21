@@ -14,7 +14,7 @@ namespace SnakeNamespace
 
         public SolidColorBrush Colour = new SolidColorBrush(Colors.Blue);
         public List<MapSquere> SnakeCopyBodyList = new List<MapSquere>();
-        public List<MapSquere> GetBodyAsArrayList
+        public List<MapSquere> GetBodyAsList
         {
             get
             {

@@ -14,7 +14,7 @@ namespace SnakeNamespace
         public Snake snake;
         public Cherry cherry;
         public VisualCopyOfSnake copyOfSnake;
-        public Thread moveThread;
+        public SnakeMove snakeMove;
         public const int RectangleSize = 15;
 
         private readonly object PadLock = new object();
@@ -49,26 +49,7 @@ namespace SnakeNamespace
             snake = new Snake(this);
             cherry = new Cherry(this);
             copyOfSnake = new VisualCopyOfSnake(snake, this);
-
-            CreateMoveThread();
-        }
-
-        public void CreateMoveThread()
-        {
-            moveThread = new Thread(new ThreadStart(() => snake.Move(MainWindowObject)))
-            {
-                IsBackground = true
-            };
-            moveThread.SetApartmentState(ApartmentState.STA);
-            moveThread.Start();
-        }
-
-        public void EndMoveThread()
-        {
-            if (moveThread.IsAlive)
-            {
-                snake.AbortMoveThread = true;
-            }
+            snakeMove = new SnakeMove(this, snake);
         }
 
         public void EndOfGame()
